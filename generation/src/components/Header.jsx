@@ -28,7 +28,7 @@ const Header = () => {
               <Link to='/login' className="bg-green-400 hover:text-red-200 px-4 py-2 rounded-lg">Login</Link>
             </li>
             <li>
-              <Link to='/join' className="bg-gray-600 hover:text-red-500  px-4 py-2 rounded-lg">Join</Link>
+              <Link to='/join' className="bg-gray-600 hover:text-red-500 text-white  px-4 py-2 rounded-lg">Join</Link>
             </li>
           </ul>
         </div>
