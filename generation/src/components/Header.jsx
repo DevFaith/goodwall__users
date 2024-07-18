@@ -3,9 +3,9 @@ import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
   const [dropdown, setDropdown] = useState(false);
-
+  console.log(props.userInfo);
   return (
     <>
       <div className='w-full relative h-16 bg-gray-200 border-b border-red-200 px-5 flex justify-between items-center'>
