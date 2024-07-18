@@ -16,7 +16,7 @@ const Header = (props) => {
           <ul className='flex gap-8  text-2xl'>
             
             <li>
-              <Link to='/aboutus' className="hover:text-red-500 hover:bg-gray-200 px-4 py-2 rounded-lg">Aboutus</Link>
+              <Link to='/' className="hover:text-red-500 hover:bg-gray-200 px-4 py-2 rounded-lg">Aboutus</Link>
             </li>
             <li>
               <Link to='/news' className="hover:text-red-500 hover:bg-gray-200 px-4 py-2 rounded-lg">News</Link>
