@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { db } from '../Config';
+import { auth } from '../Config';
 import { collection, addDoc } from 'firebase/firestore';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
+
 
 function Write() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const submit = async () => {
     if (!firstName || !lastName || !email) {
@@ -16,19 +19,21 @@ function Write() {
     }
 
     try {
-      await addDoc(collection(db, 'users'), {
-        first: firstName,
-        last: lastName,
-        email: email
-      });
-      alert('Data Added');
+      const result = await createUserWithEmailAndPassword(auth, email, password)
+      console.log(result);
+        await addDoc(collection(db, 'users'), {
+          first: firstName,
+          last: lastName,
+          email: email,
+          user1: result.user.uid
+        })
+     
     } catch (error) {
       console.error("Error adding document: ", error);
     }
   };
 
   const signInWithGoogle = () => {
-    const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -62,6 +67,12 @@ function Write() {
           type="email"
           placeholder='Email'
           onChange={(e) => setEmail(e.target.value)}
+          className='w-full p-2 mb-4 border border-gray-300 rounded'
+        />
+        <input
+          type="password"
+          placeholder='password'
+          onChange={(e) => setPassword(e.target.value)}
           className='w-full p-2 mb-4 border border-gray-300 rounded'
         />
         <button
