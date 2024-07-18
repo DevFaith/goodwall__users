@@ -6,11 +6,12 @@ import {  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } 
 import { FcGoogle } from "react-icons/fc";
 
 
-function Write() {
+function Login(props) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
 
   const submit = async () => {
     if (!firstName || !lastName || !email) {
@@ -40,7 +41,9 @@ function Write() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        alert(`Welcome ${user.displayName}`);
+        // alert(`Welcome ${user.displayName}`);
+        props.updateUserInfo(user);
+
       }).catch((error) => {
         console.error("Error during Google sign-in: ", error);
         alert(`Google sign-in failed: ${error.message}`);
@@ -49,6 +52,7 @@ function Write() {
 
   return (
     <div className='bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4'>
+
       <div className='bg-white p-6 rounded-lg shadow-md w-full max-w-md'>
         <h1 className='text-2xl font-bold mb-4'>Enter Personal Data</h1>
         <input
@@ -93,4 +97,4 @@ function Write() {
   );
 }
 
-export default Write;
+export default Login;
