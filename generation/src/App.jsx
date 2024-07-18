@@ -22,7 +22,7 @@ function App() {
           <Header userInfo={userInfo} />
         </div>
         <Routes>
-          <Route path='/aboutus' element={<Aboutus />} />
+          <Route path='/' element={<Aboutus />} />
           <Route path='/login' updateUserInfo={updateUserInfo} element={<Login />} />
           <Route path='/news' element={<News />} />
           <Route path='/partner' element={<Partner />} />
