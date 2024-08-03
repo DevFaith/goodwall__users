@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 
 
 function Login(props) {
+  const {updateUserInfo=() => {console.log('updateUserInfo not defined')}} = props
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -39,10 +40,10 @@ function Login(props) {
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+        const token = credential?.accessToken;
         const user = result.user;
         // alert(`Welcome ${user.displayName}`);
-        props.updateUserInfo(user);
+        updateUserInfo(user);
 
       }).catch((error) => {
         console.error("Error during Google sign-in: ", error);
