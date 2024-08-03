@@ -23,7 +23,7 @@ function App() {
         </div>
         <Routes>
           <Route path='/' element={<Aboutus />} />
-          <Route path='/login' updateUserInfo={updateUserInfo} element={<Login />} />
+          <Route path='/login'  element={<Login updateUserInfo={updateUserInfo} />} />
           <Route path='/news' element={<News />} />
           <Route path='/partner' element={<Partner />} />
           <Route path='/join' element={<Join />} />
